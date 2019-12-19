@@ -4,28 +4,16 @@ import './movie.css';
 
 class MovieComponent extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      imgUrl: null
-    }
-  }
-
   static propTypes = {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
   }
 
-  componentDidMount() {
-    this.setState({
-      imgUrl: `https://image.tmdb.org/t/p/w500/${this.props.image}`
-    })
-  }
-
   render() {
+    const { image } = this.props;
     return(
       <div>
-        <img src={this.state.imgUrl} alt={this.props.title} className="movie-component"></img>
+        <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt={this.props.title} className="movie-component"></img>
       </div>
     )
   }

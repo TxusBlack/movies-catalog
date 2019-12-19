@@ -5,6 +5,8 @@ import {
   getMovies
 } from '../redux/actions';
 
+import MovieComponent from '../components/movie/movie';
+
 class App extends React.Component {
 
   async componentDidMount() {
@@ -16,6 +18,7 @@ class App extends React.Component {
     return (
       <>
         <div>App.js</div>
+        <MovieComponent image="7XiGqZE8meUv7L4720L0tIDd7gO.jpg" title="Iron Man 3" />
       </>
     )
   }
@@ -28,7 +31,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  // login: (id, uid, onesignal) => dispatch(login(id, uid, onesignal))
   getMovies: () => dispatch(getMovies())
 });
 

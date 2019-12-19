@@ -5,7 +5,8 @@ import {
 
 const initialState = {
   isFetching: false,
-  movies: []
+  movies: [],
+  error: false
 };
 
 export default (state = initialState, action) => {
@@ -13,13 +14,15 @@ export default (state = initialState, action) => {
     case FETCHING_DATA:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
+        error: false
       }
     case FETCHING_DATA_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        movies: action.payload
+        movies: action.payload,
+        error: false
       }
     default:
       return state;

@@ -6,6 +6,7 @@ import {
 } from '../redux/actions';
 
 import MovieComponent from '../components/movie/movie';
+import NavBar from '../components/navbar';
 
 class App extends React.Component {
 
@@ -17,8 +18,11 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div>App.js</div>
-        <MovieComponent image="7XiGqZE8meUv7L4720L0tIDd7gO.jpg" title="Iron Man 3" />
+        <NavBar />
+        <div className="container">
+          <div>App.js</div>
+          <MovieComponent image="7XiGqZE8meUv7L4720L0tIDd7gO.jpg" title="Iron Man 3" />
+        </div>
       </>
     )
   }

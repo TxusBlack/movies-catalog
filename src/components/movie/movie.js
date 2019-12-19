@@ -10,10 +10,10 @@ class MovieComponent extends React.Component {
   }
 
   render() {
-    const { image } = this.props;
+    const { image, title } = this.props;
     return(
       <div>
-        <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt={this.props.title} className="movie-component"></img>
+        <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt={title} className="movie-component"></img>
       </div>
     )
   }

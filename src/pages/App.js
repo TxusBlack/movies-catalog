@@ -35,7 +35,7 @@ class App extends React.Component {
     return (
       <>
         <NavBar />
-        <div className="container pt-3 pb-3">
+        <div className="container pt-4 pb-4">
           {this.row(this.props.data.movies)}
         </div>
       </>

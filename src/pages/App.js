@@ -12,7 +12,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     await this.props.getMovies();
-    console.log('movies', this.props.data.movies);
+    // console.log('movies', this.props.data.movies);
   }
 
   row = (movies) => {

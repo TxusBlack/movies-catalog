@@ -17,17 +17,35 @@ class App extends React.Component {
 
   row = (movies) => {
     let arr = [], columns = [];
-    movies.forEach((movie, i) => {
-      columns.push(
-        <div key={i} className="col-md-3 col-sm-6 mb-4">
-          <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
-        </div>
-      );
-      if ((i + 1) % 4 === 0) {
-        arr.push(<div key={i} className="row">{columns}</div>);
-        columns = [];
-      }
-    });
+    if (this.props.data.isMovie) {
+      movies.forEach((movie, i) => {
+        if (movie.poster_path && movie.original_title) {
+          columns.push(
+            <div key={i} className="col-md-3 col-sm-6 mb-4">
+              <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
+            </div>
+          );
+        }
+        if ((i + 1) % 4 === 0) {
+          arr.push(<div key={i} className="row">{columns}</div>);
+          columns = [];
+        }
+      });
+    } else {
+      movies[0].known_for.forEach((movie, i) => {
+        if (movie.poster_path && movie.original_title) {
+          columns.push(
+            <div key={i} className="col-md-3 col-sm-6 mb-4">
+              <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
+            </div>
+          );
+        }
+        if ((i + 2) % 4 === 0) {
+          arr.push(<div key={i} className="row">{columns}</div>);
+          columns = [];
+        }
+      });
+    }
     return arr;
   }
 
@@ -45,7 +63,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.movies
+    data: state.movies,
+    isMovie: state.isMovie
   }
 };
 

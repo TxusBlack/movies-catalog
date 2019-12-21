@@ -6,6 +6,7 @@ import {
 const initialState = {
   isFetching: false,
   movies: [],
+  isMovie: true,
   error: false
 };
 
@@ -22,6 +23,7 @@ export default (state = initialState, action) => {
         ...state,
         isFetching: false,
         movies: action.payload,
+        isMovie: action.isMovie,
         error: false
       }
     default:

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
 import '../../styles/styles.css';
@@ -9,6 +10,7 @@ import {
   getMovies
 } from '../../redux/actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
 
@@ -39,7 +41,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-        <a className="navbar-brand" href="/">Movies Catalog</a>
+        <Link to={`/`} className="navbar-brand">Movies Catalog</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

@@ -19,8 +19,8 @@ class App extends React.Component {
     let arr = [], columns = [];
     movies.forEach((movie, i) => {
       columns.push(
-        <div key={i} className="col-md-3 col-sm-6 mb-3">
-          <MovieComponent className="col-md-3 col-sm-6 mb-3" image={movie.poster_path} title={movie.original_title} key={movie.id} />
+        <div key={i} className="col-md-3 col-sm-6 mb-4">
+          <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
         </div>
       );
       if ((i + 1) % 4 === 0) {

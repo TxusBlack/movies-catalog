@@ -15,7 +15,7 @@ class NavBar extends React.Component {
           <div className="mr-auto"></div>
           <form className="form-inline my-2 my-lg-0">
             <select className="form-control mr-2" id="select-search">
-              <option selected>Title Movies</option>
+              <option defaultValue>Title Movies</option>
               <option>Actors</option>
             </select>
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="input-search"></input>

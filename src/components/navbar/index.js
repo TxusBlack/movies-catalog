@@ -4,13 +4,13 @@ import React from 'react';
 import '../../styles/styles.css';
 import 'jquery';
 import 'bootstrap/js/src/collapse.js';
+import marvel from '../../assets/img/marvel.png';
 
 import {
   search,
   getMovies
 } from '../../redux/actions';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
 
@@ -18,16 +18,22 @@ class NavBar extends React.Component {
     super(props);
     this.state = {
       select: true,
-      title: null
+      title: ''
     }
   }
 
-  doSearch = async () => {
+  doSearch = async (logo = false) => {
     const { select, title } = this.state;
     const { getMovies, search, location } = this.props;
-    if (!title) await getMovies();
-    if (title) await search(title, select);
-    if (location.pathname.slice(0, 6) === '/movie') this.props.history.push('/');
+    if (logo) {
+      this.setState({ title: '' });
+      await getMovies();
+      this.props.history.push('/');
+    } else {
+      if (!title) await getMovies();
+      if (title) await search(title, select);
+      if (location.pathname.slice(0, 6) === '/movie') this.props.history.push('/');
+    }
   }
 
   input = (event, isSelect) => {
@@ -41,7 +47,9 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-        <Link to={`/`} className="navbar-brand">Movies Catalog</Link>
+        <button type="button" class="btn btn-link" onClick={() => this.doSearch(true)}>
+          <img src={marvel} alt="Logo" className="img-fluid" style={{ width: 75 }}></img>
+        </button>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -52,8 +60,8 @@ class NavBar extends React.Component {
               <option value={1}>Title Movies</option>
               <option value={0}>Actors</option>
             </select>
-            <input className="form-control mr-sm-2" placeholder="Search" id="input-search" onChange={(e) => this.input(e, false)}></input>
-            <button className="btn btn-primary my-2 my-sm-0" onClick={() => this.doSearch()}>Search</button>
+            <input className="form-control mr-sm-2" placeholder="Search" id="input-search" value={this.state.title} onChange={(e) => this.input(e, false)}></input>
+            <button className="btn btn-primary custom-btn my-2 my-sm-0" onClick={() => this.doSearch()}>Search</button>
           </div>
         </div>        
       </nav>

@@ -1,4 +1,5 @@
-#select-search, #input-search {
+#select-search,
+#input-search {
   width: 200px;
 }
 .movie-component {
@@ -14,4 +15,39 @@
 }
 #container-movie {
   height: calc(100vh - 104px);
+}
+.background {
+  background-color: #000;
+  min-height: 100vh;
+  height: 100%;
+  width: 100vw;
+}
+.bg-dark {
+  background-color: #222 !important;
+}
+.navbar-dark
+.navbar-brand {
+  color: #EB001E !important;
+}
+.custom-btn,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:hover,
+.btn-primary.hover,
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #EB001E;
+  border-color: #EB001E;
+  box-shadow: none;
+}
+.form-control,
+.form-control:focus {
+  background-color: transparent;
+  box-shadow: none;
+  border-color: #ced4da;
+  color: #fff;
+}
+h1,
+h4,
+p {
+  color: #fff;
 }

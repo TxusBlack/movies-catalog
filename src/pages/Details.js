@@ -47,14 +47,14 @@ class DetailsPage extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="background">
         <Navbar {...this.props} />
         <div className="container pt-4 pb-4">
           {
             this._showContent()
           }
         </div>
-      </>
+      </div>
     )
   }
 }

@@ -8,6 +8,7 @@ import {
 
 import MovieComponent from '../components/movie/movie';
 import NavBar from '../components/navbar';
+import '../styles/styles.css';
 
 class App extends React.Component {
 
@@ -55,12 +56,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="background pb-4">
         <NavBar {...this.props} />
         <div className="container pt-4 pb-4">
           {this._row(this.props.data.movies)}
         </div>
-      </>
+      </div>
     )
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '../../styles/styles.css';
 import 'jquery';
 import 'bootstrap/js/src/collapse.js';
@@ -21,9 +22,10 @@ class NavBar extends React.Component {
 
   doSearch = async () => {
     const { select, title } = this.state;
-    const { getMovies, search } = this.props;
+    const { getMovies, search, location } = this.props;
     if (!title) await getMovies();
     if (title) await search(title, select);
+    if (location.pathname.slice(0, 6) === '/movie') this.props.history.push('/');
   }
 
   input = (event, isSelect) => {

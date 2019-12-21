@@ -38,7 +38,9 @@ class App extends React.Component {
         if (movie.poster_path && movie.original_title) {
           columns.push(
             <div key={movie.id} className="col-md-3 col-sm-6 mb-4">
-              <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
+              <Link to={`/movie/${movie.id}`}>
+                <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
+              </Link>
             </div>
           );
         } else i-=1
@@ -54,7 +56,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <NavBar />
+        <NavBar {...this.props} />
         <div className="container pt-4 pb-4">
           {this._row(this.props.data.movies)}
         </div>

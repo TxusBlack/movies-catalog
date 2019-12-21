@@ -23,7 +23,6 @@ class DetailsPage extends React.Component {
     this.setState({
       details: this.props.data
     });
-    console.log('details', this.props.data);
   }
 
   _showContent = () => {
@@ -49,7 +48,7 @@ class DetailsPage extends React.Component {
   render() {
     return (
       <>
-        <Navbar />
+        <Navbar {...this.props} />
         <div className="container pt-4 pb-4">
           {
             this._showContent()

@@ -21,13 +21,13 @@ class App extends React.Component {
       movies.forEach((movie, i) => {
         if (movie.poster_path && movie.original_title) {
           columns.push(
-            <div key={i} className="col-md-3 col-sm-6 mb-4">
+            <div key={movie.id} className="col-md-3 col-sm-6 mb-4">
               <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
             </div>
           );
-        }
+        } else i-=1
         if ((i + 1) % 4 === 0) {
-          arr.push(<div key={i} className="row">{columns}</div>);
+          arr.push(<div key={movie.id} className="row">{columns}</div>);
           columns = [];
         }
       });
@@ -35,13 +35,13 @@ class App extends React.Component {
       movies[0].known_for.forEach((movie, i) => {
         if (movie.poster_path && movie.original_title) {
           columns.push(
-            <div key={i} className="col-md-3 col-sm-6 mb-4">
+            <div key={movie.id} className="col-md-3 col-sm-6 mb-4">
               <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
             </div>
           );
-        }
+        } else i-=1
         if ((i + 2) % 4 === 0) {
-          arr.push(<div key={i} className="row">{columns}</div>);
+          arr.push(<div key={movie.id} className="row">{columns}</div>);
           columns = [];
         }
       });

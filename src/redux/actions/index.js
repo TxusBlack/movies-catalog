@@ -1,6 +1,7 @@
 import {
   FETCHING_DATA,
-  FETCHING_DATA_SUCCESS
+  FETCHING_DATA_SUCCESS,
+  FETCHING_MOVIE_SUCCESS
 } from '../constants';
 
 import axios from 'axios';
@@ -15,6 +16,10 @@ export const fetchingData = () => {
 
 export const fetchingDataSucces = (movies, isMovie) => {
   return { type: FETCHING_DATA_SUCCESS, payload: movies, isMovie: isMovie }
+}
+
+export const fetchingMovieSucces = (movie) => {
+  return { type: FETCHING_MOVIE_SUCCESS, payload: movie }
 }
 
 /**
@@ -40,7 +45,19 @@ export const search = (query, isMovie) => dispatch => {
       dispatch(fetchingData());
       const movies = await axios.get(`${API_URL}search/${isMovie ? 'movie' : 'person'}?api_key=${API_KEY}&query=${query}&language=es`);
       dispatch(fetchingDataSucces(movies.data.results, isMovie));
-      // console.log(movies.data.results);
+      resolve();
+    } catch (err) {
+      reject();
+    }
+  });
+}
+
+export const getMovie = (movieId) => dispatch => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      dispatch(fetchingData());
+      const movie = await axios.get(`${API_URL}movie/${movieId}?api_key=${API_KEY}&language=es`);
+      dispatch(fetchingMovieSucces(movie.data));
       resolve();
     } catch (err) {
       reject();

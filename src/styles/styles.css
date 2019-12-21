@@ -12,3 +12,6 @@
   transition: all .4s ease; /* zoom in */
   cursor: pointer;
 }
+#container-movie {
+  height: calc(100vh - 104px);
+}

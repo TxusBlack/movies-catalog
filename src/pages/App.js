@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import { connect } from 'react-redux';
 import {
@@ -12,17 +13,18 @@ class App extends React.Component {
 
   async componentDidMount() {
     await this.props.getMovies();
-    // console.log('movies', this.props.data.movies);
   }
 
-  row = (movies) => {
+  _row = (movies) => {
     let arr = [], columns = [];
     if (this.props.data.isMovie) {
       movies.forEach((movie, i) => {
         if (movie.poster_path && movie.original_title) {
           columns.push(
             <div key={movie.id} className="col-md-3 col-sm-6 mb-4">
-              <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
+              <Link to={`/movie/${movie.id}`}>
+                <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
+              </Link>
             </div>
           );
         } else i-=1
@@ -54,7 +56,7 @@ class App extends React.Component {
       <>
         <NavBar />
         <div className="container pt-4 pb-4">
-          {this.row(this.props.data.movies)}
+          {this._row(this.props.data.movies)}
         </div>
       </>
     )

@@ -43,7 +43,7 @@ export const search = (query, isMovie) => dispatch => {
   return new Promise(async (resolve, reject) => {
     try {
       dispatch(fetchingData());
-      const movies = await axios.get(`${API_URL}search/${isMovie ? 'movie' : 'person'}?api_key=${API_KEY}&query=${query}&language=es`);
+      const movies = await axios.get(`${API_URL}search/${isMovie ? 'movie' : 'person'}?api_key=${API_KEY}&query=${query}&language=en`);
       dispatch(fetchingDataSucces(movies.data.results, isMovie));
       resolve();
     } catch (err) {
@@ -56,7 +56,7 @@ export const getMovie = (movieId) => dispatch => {
   return new Promise(async (resolve, reject) => {
     try {
       dispatch(fetchingData());
-      const movie = await axios.get(`${API_URL}movie/${movieId}?api_key=${API_KEY}&language=es`);
+      const movie = await axios.get(`${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en`);
       dispatch(fetchingMovieSucces(movie.data));
       resolve();
     } catch (err) {

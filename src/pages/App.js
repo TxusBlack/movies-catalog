@@ -19,21 +19,25 @@ class App extends React.Component {
   _row = (movies) => {
     let arr = [], columns = [];
     if (this.props.data.isMovie) {
-      movies.forEach((movie, i) => {
-        if (movie.poster_path && movie.original_title) {
-          columns.push(
-            <div key={movie.id} className="col-md-3 col-sm-6 mb-4">
-              <Link to={`/movie/${movie.id}`}>
-                <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
-              </Link>
-            </div>
-          );
-        } else i-=1
-        if ((i + 1) % 4 === 0) {
-          arr.push(<div key={movie.id} className="row">{columns}</div>);
-          columns = [];
-        }
-      });
+      if (movies) {
+        movies.forEach((movie, i) => {
+          if (movie.poster_path && movie.original_title) {
+            columns.push(
+              <div key={movie.id} className="col-md-3 col-sm-6 mb-4">
+                <Link to={`/movie/${movie.id}`}>
+                  <MovieComponent className="col-md-3 col-sm-6 mb-4" image={movie.poster_path} title={movie.original_title} key={movie.id} />
+                </Link>
+              </div>
+            );
+          } else i-=1
+          if ((i + 1) % 4 === 0) {
+            arr.push(<div key={movie.id} className="row">{columns}</div>);
+            columns = [];
+          }
+        });
+      } else {
+        return(<h4>No hay coincidencias en la búsqueda</h4>)
+      }
     } else {
       if (movies[0]) {
         movies[0].known_for.forEach((movie, i) => {

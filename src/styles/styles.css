@@ -1,3 +1,7 @@
 #select-search, #input-search {
   width: 200px;
 }
+.movie-component {
+  width: 200px;
+  height: 'auto';
+}

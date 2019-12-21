@@ -12,7 +12,7 @@ import NavBar from '../components/navbar';
 class App extends React.Component {
 
   async componentDidMount() {
-    await this.props.getMovies();
+    if (this.props.data.movies.length === 0) await this.props.getMovies();
   }
 
   _row = (movies) => {

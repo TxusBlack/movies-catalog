@@ -47,7 +47,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-        <button type="button" class="btn btn-link" onClick={() => this.doSearch(true)}>
+        <button type="button" className="btn btn-link" onClick={() => this.doSearch(true)}>
           <img src={marvel} alt="Logo" className="img-fluid" style={{ width: 75 }}></img>
         </button>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,14 +55,14 @@ class NavBar extends React.Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <div className="mr-auto"></div>
-          <div className="form-inline my-2 my-lg-0">
+          <form className="form-inline my-2 my-lg-0" onSubmit={() => this.doSearch()}>
             <select className="form-control mr-2" id="select-search" onChange={(e) => this.input(e, true)} value={this.state.select}>
               <option value={1}>Title Movies</option>
               <option value={0}>Actors</option>
             </select>
             <input className="form-control mr-sm-2" placeholder="Search" id="input-search" value={this.state.title} onChange={(e) => this.input(e, false)}></input>
-            <button className="btn btn-primary custom-btn my-2 my-sm-0" onClick={() => this.doSearch()}>Search</button>
-          </div>
+            <button className="btn btn-primary custom-btn my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>        
       </nav>
     )

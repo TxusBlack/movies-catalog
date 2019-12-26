@@ -21,7 +21,6 @@
   overflow: auto;
   min-height: 100vh;
   height: 100%;
-  width: 100vw;
 }
 .bg-dark {
   background-color: #222 !important;
